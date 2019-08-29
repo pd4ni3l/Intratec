@@ -1,0 +1,15 @@
+extends layout
+block content
+  .container
+    .alert(class="alert-danger", role="alert", id="error-group", style="display: none")
+      ul(id="errors")
+    .row
+      .col-sm.col-md-8.offset-md-2.col-lg-6.offset-lg-3
+        h3 Inserindo novo registro
+        form
+          .form-group
+            input.form-control(type="text", id="url", placeholder="Informe a URL")
+          .form-group
+            input.form-control(type="text", id="name", placeholder="Informe nome do Link")
+          .form-group
+            button.form-control(type="button", class="btn btn-primary", id="signup-btn") Submit

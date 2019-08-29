@@ -1,0 +1,31 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Adiciona Link no Menu</title>
+    <link href="/stylesheet/bootstrap.min.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+           Adiciona link no Menu
+        </div>
+        <div class="panel-body">
+          <form method="post" action="/incluilink">
+            <div class="form-group">
+              <label class="col-md-4">Nome do Link</label>
+              <input type="text" class="form-control" name="nome" placeholder="Informe a URL"/>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4">URL do Link</label>
+              <input type="text" class="form-control" name="url" placeholder="Informe nome do link"/>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

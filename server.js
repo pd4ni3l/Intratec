@@ -1,11 +1,15 @@
 const express = require('express')
 const bodyParser = require('body-parser');
+const hbs = require('express-hbs');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const expressValidator = require('express-validator');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(cookieParser());
+app.use(session({secret: 'krunal', saveUninitialized: false, resave: false}));
 const PORT = 8080;
-//const sqlite3 = require('sqlite3').verbose();
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('db/intratec.db', function(err){
     if (err) {
@@ -16,12 +20,22 @@ const db = new sqlite3.Database('db/intratec.db', function(err){
 });
 
 app.use(express.static(__dirname + '/public'))
+app.engine('hbs', hbs.express4({
+    partialsDir: __dirname + '/views/partials'
+  }));
+ app.set('view engine', 'hbs');
+ app.set('views', __dirname + '/views');
+
 
 // Routes
-app.get('/', function(request, response){
-    response.send('Hello, World!')
-})
-//app.get('/nav', function(request, response) {
+const incluiLink = require('./routes/route');
+
+app.use('/incluilink',incluiLink);
+
+
+
+
+
 app.get('/navegacao', function(request, response) {
     db.serialize(function(){
         db.all("SELECT nome_url, url_url FROM navbar ORDER BY nome_url;", function(err, rows){
@@ -39,7 +53,7 @@ app.get('/navegacao', function(request, response) {
     
 })
 
-app.post('/navegacao', function(req, res){
+app.post('/navegacao',function(req, res){
     let sql = 'INSERT INTO navbar (nome_url, url_url) VALUES (?, ?)'
     var params = [req.body.nomeLink, req.body.url]
     db.run(sql, params, function(err, result){

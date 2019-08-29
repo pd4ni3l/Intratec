@@ -5,7 +5,11 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
+    "express-hbs": "^2.1.2",
+    "express-session": "^1.16.2",
+    "express-validator": "^6.1.1",
     "helmet": "^3.20.0",
     "sqlite3": "^4.1.0"
   },
@@ -16,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/pd4niel/intratec"
+    "url": "https://github.com/pd4niel/intratec"
   },
   "keywords": [
     "intratec"
