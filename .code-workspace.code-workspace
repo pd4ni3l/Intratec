@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "/home/REDEMPM/paulo.goncalves/public_html"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"gitlab.instanceUrl": "https://gitlab.com/pd4ni3l/intratec",
+		"gitlab.ignoreCertificateErrors": true
+	}
+}

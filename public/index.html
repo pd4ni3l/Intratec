@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <!--<link rel="stylesheet" type="text/css" href="stylesheets/style.css"> -->
+    <!--[if lte IE 7]>
+    <style>
+    .content { margin-right: -1px; } /* this 1px negative margin can be placed on any of the columns in this layout with the same corrective effect. */
+    ul.nav a { zoom: 1; }  /* the zoom property gives IE the hasLayout trigger it needs to correct extra whiltespace between the links */
+    </style>
+    <![endif]-->      
+    <title>..:::INTRATEC - Intranet de Tecnologia - DTI/DO/SESEG:::..</title>  
+    </head>
+    <body id="corpo">
+        <div class="container">
+                <div class="banner"><img id='imgbanner' src="images/banner-site.jpg" /></div>
+                <div class="header">
+                <!-- end .header --></div>
+        <div class="sidebar1">
+            <ul class="nav" id="menu">
+            <form action="/navegacao" method='POST'>
+            <input type='text' name="url" placeholder="Informe a URL"/>
+            <input type="text" name="nomeLink" placeholder="Informe nome do link">
+            <input type="submit" value="Enviar"/>
+            </form>
+            
+                <!-- Carrega Menu do banco-->
+            </ul>
+        <!-- end .sidebar --></div>
+        <div class="content">
+            <p>A INTRATEC é um ambiente de Proxy HTTPS com autenticação destinado exclusivamente aos integrantes do DTI.
+        <!-- end .content --></div>
+    <div class="footer" id="footer">
+        <!-- <div class="imagemRodape"><img id="footbanner" src="#" /></div>  -->
+        <p>Direitos não reservados - Copyleft</p>
+    <!-- end .footer --></div>
+    <!-- end .container --></div>
+    <footer>
+        <script src="scripts/jquery.min.js"></script>
+        <script language="javascript" type="text/javascript" src="scripts/menu.js"></script>
+        <script src="scripts/tema.js"></script>
+    </footer>
+    </body>
+</html>
