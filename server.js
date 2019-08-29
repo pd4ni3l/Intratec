@@ -1,14 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const hbs = require('express-hbs');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const expressValidator = require('express-validator');
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(cookieParser());
-app.use(session({secret: 'krunal', saveUninitialized: false, resave: false}));
 const PORT = 8080;
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('db/intratec.db', function(err){
@@ -19,22 +16,25 @@ const db = new sqlite3.Database('db/intratec.db', function(err){
     console.log("Conectado ao banco")
 });
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
+app.use(session({secret: 'krunal', saveUninitialized: false, resave: false}));
+
+
 app.use(express.static(__dirname + '/public'))
+
 app.engine('hbs', hbs.express4({
-    partialsDir: __dirname + '/views/partials'
+    partialsDir: __dirname + '/views'
   }));
  app.set('view engine', 'hbs');
  app.set('views', __dirname + '/views');
 
 
 // Routes
-const incluiLink = require('./routes/route');
+const blockchain = require('./routes/blockchain.route');
 
-app.use('/incluilink',incluiLink);
-
-
-
-
+app.use('/blockchain',blockchain);
 
 app.get('/navegacao', function(request, response) {
     db.serialize(function(){
