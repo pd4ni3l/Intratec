@@ -32,9 +32,9 @@ app.engine('hbs', hbs.express4({
 
 
 // Routes
-const blockchain = require('./routes/formIncluir.route');
+const formincluir = require('./routes/formIncluir.route');
 
-app.use('/blockchain',blockchain);
+app.use('/formincluir',formincluir);
 
 app.get('/navegacao', function(request, response) {
     db.serialize(function(){
@@ -54,8 +54,9 @@ app.get('/navegacao', function(request, response) {
 })
 
 app.post('/navegacao',function(req, res){
+    console.log(req.body.nome, req.body.url)
     let sql = 'INSERT INTO navbar (nome_url, url_url) VALUES (?, ?)'
-    var params = [req.body.nomeLink, req.body.url]
+    var params = [req.body.nome, req.body.url]
     db.run(sql, params, function(err, result){
         if (err){
             console.log('Xiii deu ruim' + err)

@@ -28,6 +28,13 @@ if (monName [now.getMonth() ] == 'agosto') {
     secaoFooter.prepend(divi)
     }
 else{
+  $('<link>')
+    .appendTo('head')
+    .attr({
+      type: 'text/css', 
+      rel: 'stylesheet',
+      href: 'stylesheets/style-base.css'
+    });
     $('#imgbanner').attr('src', 'images/banner-site.jpg');
     $('#footbanner').attr('src', 'images/gato.png');
     document.body.style.backgroundColor = '#010f2c';
