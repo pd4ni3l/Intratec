@@ -8,8 +8,8 @@ router.get('/', function(req, res){
 });
 
 router.post('/post', function(req, res) {
-   let nome = req.body.nome;
-   let url = req.body.url;
+   let nome = req.body.nome
+   let url = req.body.url
    console.log('nome: ', +nome, ' URL: ', +url)
    check('nome', 'Falta nome').exists();
    

@@ -16,9 +16,9 @@ const db = new sqlite3.Database('db/intratec.db', function(err){
     console.log("Conectado ao banco")
 });
 
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
+app.use(cookieParser())
 app.use(session({secret: 'krunal', saveUninitialized: false, resave: false}));
 
 
