@@ -1,5 +1,5 @@
 const express = require('express')
-const { check, oneOf, validationErrors } = require('express-validator');
+const { check, getValidationResult } = require('express-validator');
 
 const router =  express.Router();
 
@@ -7,18 +7,11 @@ router.get('/', function(req, res){
    res.render('formincluir');
 });
 
-router.post('/post', function(req, res) {
-   let nome = req.body.nome
-   let url = req.body.url
-   console.log('nome: ', +nome, ' URL: ', +url)
-   check('nome', 'Falta nome').exists();
-   
+router.post('/post',[  check('nome').isEmpty().withMessage('Nome não pode ser nulo') ], function(req, res) {
 
-   //req.checkBody('nome', 'Nome é requerido is required').notEmpty();
-   //req.checkBody(req.body.url, 'URL é requerido').notEmpty();
-
-   var errors = req.validationErrors();
-   if(errors){
+   // Check Erros
+   const errors = getValidationResult(req);
+   if(!errors.isEmpty()){
       req.session.errors = errors;
       req.session.success = false;
       res.redirect('/formincluir');
