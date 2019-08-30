@@ -3,7 +3,7 @@ const { check, getValidationResult } = require('express-validator');
 
 const router =  express.Router();
 
-router.get('/', function(req, res){
+router.get('/', function( req, res){
    res.render('formincluir');
 });
 
