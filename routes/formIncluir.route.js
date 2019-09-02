@@ -17,9 +17,9 @@ router.post('/post',[ check('url', 'URL vazio').isURL(), check('nome', 'Nome vaz
    // check('nome', 'Nome vazio').isEmpty()
    //check('url', 'URL vazio').isEmpty()
    const errors = validationResult(req);
-   var temErros = JSON.parse(errors)
-   console.log(temErros)
-   if(!errors.isEmpty()){
+   //var temErros = JSON.parse(errors)
+   console.log(errors)
+   if(errors.value == null ){
       console.log('ERROS: ', errors)
       req.session.errors = errors;
       req.session.success = false;
