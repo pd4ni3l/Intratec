@@ -2,7 +2,7 @@ dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta"
 monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho","agosto", "setembro", "outubro", "novembro", "dezembro");
 now = new Date
 $(document).ready(function(){
-if (monName [now.getMonth() ] == 'agosto') {
+if (monName [now.getMonth() ] == 'setembro') {
     // tema halloween
     $('<link>')
     .appendTo('head')
