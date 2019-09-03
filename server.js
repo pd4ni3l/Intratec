@@ -19,7 +19,7 @@ const db = new sqlite3.Database('db/intratec.db', function(err){
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser())
-app.use(session({secret: 'krunal', saveUninitialized: false, resave: false}));
+app.use(session({secret: 'nosecret', saveUninitialized: false, resave: false}));
 
 
 app.use(express.static(__dirname + '/public'))
@@ -33,9 +33,12 @@ app.engine('hbs', hbs.express4({
 
 // Routes
 const formincluir = require('./routes/formIncluir.route');
+const navegacao = require('./routes/navegacao.route');
 
 app.use('/formincluir',formincluir);
+app.use('/navegacao', navegacao);
 
+/*
 app.get('/navegacao', function(request, response) {
     db.serialize(function(){
         db.all("SELECT nome_url, url_url FROM navbar ORDER BY nome_url;", function(err, rows){
@@ -66,6 +69,7 @@ app.post('/navegacao',function(req, res){
         res.status(200).redirect('index.html')
     })
 })
+*/
 
 // LISTEN
 app.listen(PORT, function(){
