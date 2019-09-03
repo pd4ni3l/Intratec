@@ -1,18 +1,11 @@
 const express = require('express')
-/*
-const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database('db/intratec.db', function(err){
-    if (err) {
-        console.log(err)
-        return
-    }
-    console.log("Conectado ao banco")
-});
-*/
 
 const router =  express.Router();
 
-router.post('/navegacao', function( req, res){
+console.log('Estou na navegação route');
+
+router.post('/post', function( req, res){
+    console.log('Entrei no post da navegação');
     console.log(req.body.nome, req.body.url)
     let sql = 'INSERT INTO navbar (nome_url, url_url) VALUES (?, ?)'
     var params = [req.body.nome, req.body.url]
