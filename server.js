@@ -1,12 +1,11 @@
-//const express = require('express')
-const app = require('./config/custom-express');
+const express = require('express')
 const bodyParser = require('body-parser');
 const hbs = require('express-hbs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const expressValidator = require('express-validator');
-//const app = express(); 
+const app = express(); 
 const PORT = 8080;
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('db/intratec.db', function(err){
@@ -17,13 +16,12 @@ const db = new sqlite3.Database('db/intratec.db', function(err){
     console.log("Conectado ao banco")
 });
 
-//app.use(bodyParser.json())
-//app.use(bodyParser.urlencoded({extended: false}));
-//app.use(cookieParser())
-//app.use(session({secret: 'nosecret', saveUninitialized: false, resave: false}));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser())
+app.use(session({secret: 'nosecret', saveUninitialized: false, resave: false}));
 
-
-//app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'))
 
 app.engine('hbs', hbs.express4({
     partialsDir: __dirname + '/views'
@@ -31,12 +29,11 @@ app.engine('hbs', hbs.express4({
  app.set('view engine', 'hbs');
  app.set('views', __dirname + '/views');
 
-
 // Routes
 const formincluir = require('./routes/formIncluir.route');
 const navega = require('./routes/navega.route');
 
-app.use('/formincluir',formincluir);
+app.use('/formincluir', formincluir);
 app.use('/navega', navega);
 
 app.get('/navegacao', function(request, response) {
