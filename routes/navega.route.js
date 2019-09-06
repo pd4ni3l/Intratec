@@ -9,7 +9,7 @@ router.post('/post', function( req, res){
     console.log(req.body.nome, req.body.url)
     let sql = 'INSERT INTO navbar (nome_url, url_url) VALUES (?, ?)'
     var params = [req.body.nome, req.body.url]
-    db.run(sql, params, function(err, result){
+    db.run(sql, params, function(err, res){
     if (err){
         console.log('Xiii deu ruim' + err)
         return;
