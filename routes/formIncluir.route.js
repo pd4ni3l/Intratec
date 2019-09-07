@@ -14,12 +14,9 @@ const db = new sqlite3.Database('db/intratec.db', function(err){
 const router =  express.Router();
 
 router.get('/', function( req, res){
-   //res.send( 'Mas que droga: ' )
-   //res.render('formincluir', {success: req.session.success, errors: req.session.errors });
-   //req.session.errors = null;
+   res.render('formincluir');
 });
 router.get('/err', function( req, res){
-   //res.send( 'Mas que droga: ' )
    res.render('formincluir', {success: req.session.success, errors: req.session.errors });
    req.session.errors = null;
 });
@@ -27,14 +24,20 @@ router.post('/post',[ check('url').isURL(),
                       check('nome').isAlpha() ], function(req, res, next) {
    //const errors = validationResult(req);
    //if(!errors.isEmpty()){
-   if(req.body.nome == ''){
-      let errors = 'Falta nome';
+   if(req.body.nome == '' && req.body.url == ''){
+      let errors = 'Falta nome e URL';
       req.session.errors = errors;
       req.session.success = false;
       res.redirect('/formincluir/err');
    }
-   else if (req.body.url == ''){
+   else if (req.body.url == '' && req.body.nome != ''){
       let errors = 'Falta url';
+      req.session.errors = errors;
+      req.session.success = false;
+      res.redirect('/formincluir/err');
+   }
+   else if (req.body.url != '' && req.body.nome == ''){
+      let errors = 'Falta nome';
       req.session.errors = errors;
       req.session.success = false;
       res.redirect('/formincluir/err');
@@ -42,7 +45,7 @@ router.post('/post',[ check('url').isURL(),
    else{
       req.session.success = true;
       //console.log('ELSE.....', errors)
-      console.log('Entrei no post da navegação');
+      console.log('Entrei no post sucesso');
       console.log(req.body.nome, req.body.url)
       let sql = 'INSERT INTO navbar (nome_url, url_url) VALUES (?, ?)'
       var params = [req.body.nome, req.body.url]
