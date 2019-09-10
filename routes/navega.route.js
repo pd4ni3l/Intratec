@@ -2,7 +2,7 @@ const express = require('express')
 
 const router =  express.Router();
 
-console.log('Estou na navegação route');
+//console.log('Estou na navegação route');
 
 router.post('/post', function( req, res){
     console.log('Entrei no post da navegação');

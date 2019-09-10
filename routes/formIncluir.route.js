@@ -20,10 +20,12 @@ router.get('/err', function( req, res){
    res.render('formincluir', {success: req.session.success, errors: req.session.errors });
    req.session.errors = null;
 });
-router.post('/post',[ check('url').isURL(), 
-                      check('nome').isAlpha() ], function(req, res, next) {
-   //const errors = validationResult(req);
-   //if(!errors.isEmpty()){
+router.get('/ok', function( req, res){
+   res.render('formincluir', {success: req.session.success, errors: req.session.errors });
+   req.session.errors = null;
+});
+
+router.post('/post',[ check('url').isURL(), check('nome').isAlpha() ], function(req, res) {
    if(req.body.nome == '' && req.body.url == ''){
       let errors = 'Falta nome e URL';
       req.session.errors = errors;
@@ -55,13 +57,30 @@ router.post('/post',[ check('url').isURL(),
           console.log('Xiii deu ruim' + err)
           return;
       }
-      //console.log('Registro inserido ID: ' + this.lastID)
-      //res.status(200).redirect('/');
       db.close;
-      res.redirect('/');
+      let success = 'Registro inserido';
+      req.session.success = params;
+      res.redirect('/formincluir/ok');
       })
-      //res.redirect('/navega/post' )
-   } 
+   }
 });
+
+ router.get('/listar', (req, res) => {
+      db.serialize(function(){
+          db.all("SELECT id_nav, nome_url, url_url FROM navbar ORDER BY nome_url;", function(err, rows){
+              if (err) {
+                  console.log('Droga aconteceu algum erro' + err)
+                  //throw err;
+              }
+              else{
+               //console.log(rows)
+               req.session.listar = rows;
+               //console.log(req.session.listar)
+               res.render('formincluir', { listar: req.session.listar });
+               //res.json(rows)
+              }    
+          })
+      });
+   });
 
 module.exports = router;

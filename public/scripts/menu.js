@@ -2,8 +2,6 @@ getNav()
 function getNav() {
         $.get('/navegacao', function(data){
             if(data != null){
-                //dados = data = typeof data == 'string' ? JSON.parse(data) : data;
-                //console.log(data)
                 showNav(data)
             }
             else{
@@ -13,11 +11,6 @@ function getNav() {
     }
 function showNav(data){
     $.each(data, function (indexInArray, itens) { 
-        //console.log(indexInArray, itens)
-        //console.log(itens.nome_url)
-        //console.log(itens.url_url)
-        //console.log("Entrei no showNav com ou sem dados ? " + itens.nome_url, itens.url_url)
-        // Localizar Elemento nav
         var secaoNavega = document.getElementById('menu')
         // Criar o Elemento lista
         var lista = document.createElement('li')

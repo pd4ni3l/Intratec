@@ -7,8 +7,10 @@
   <body>
     <div class="container">
       {{#if errors }}
-            {{ log this }}
           <p class="alert alert-danger"> Falta coisa: {{ this.errors }}</p>
+      {{/if}}
+      {{#if success }}
+        <p class="alert alert-danger"> Registro inserido com sucesso!! {{ this.success }}</p>
       {{/if}}
       <div class="panel panel-primary">
         <div class="panel-heading">
@@ -31,6 +33,23 @@
           </form>
         </div>
       </div>
+    </div>
+    <div class='container'>
+     <div show class="panel panel-primary">
+        <div class="panel-heading">
+          Excluir Link
+        </div>
+      <div class="panel-body">
+        <div class="list-group">
+        {{#if listar }}
+        {{#listar}}
+          <a href="#" class="list-group-item">Nome: {{ nome_url }} URL: {{ url_url }} ID: {{ id_nav }}</a>       
+        {{/listar}}
+        {{/if}}
+        </div>
+      </div>
+      </div>
+    </div>
     </div>
   </body>
 </html>

@@ -35,11 +35,15 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 /* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
 .container {
-	width: 80%;
-	max-width: 1260px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	/*width: 80%; */
+	max-width: 960px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
 	min-width: 780px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
-	background: #FFF;
-	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+	background-color: #93A5C4;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-right: auto;
+	margin-left: auto;
+	/* margin: 0 auto; the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
 }
 
 /* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
@@ -59,6 +63,12 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 */
 .sidebar {
+	float: left;
+	width: 20%;
+	background: #93A5C4;
+	padding-bottom: 10px;
+}
+.sidebar1 {
 	float: left;
 	width: 20%;
 	background: #93A5C4;
@@ -124,8 +134,6 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background
 	margin-bottom: 20px;
 }
 .banner {
-        float:right;
-        background-color:#FFFFFF;
+        float:left;
+        /*background-color:#FFFFFF;*/
 	}
-
--->

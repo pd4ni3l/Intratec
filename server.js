@@ -54,7 +54,7 @@ app.get('/navegacao', function(request, response) {
 })
 
 app.post('/navegacao',function(req, res){
-    console.log(req.body.nome, req.body.url)
+    //console.log(req.body.nome, req.body.url)
     let sql = 'INSERT INTO navbar (nome_url, url_url) VALUES (?, ?)'
     var params = [req.body.nome, req.body.url]
     db.run(sql, params, function(err, result){
