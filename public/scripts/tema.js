@@ -33,6 +33,13 @@ else{
     .attr({
       type: 'text/css', 
       rel: 'stylesheet',
+      href: 'https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'
+    });
+  $('<link>')
+    .appendTo('head')
+    .attr({
+      type: 'text/css', 
+      rel: 'stylesheet',
       href: 'stylesheets/style-base.css'
     });
     $('#imgbanner').attr('src', 'images/banner-site.jpg');

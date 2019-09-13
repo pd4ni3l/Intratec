@@ -12,6 +12,9 @@
       {{#if success }}
         <p class="alert alert-danger"> Registro inserido com sucesso!! {{ this.success }}</p>
       {{/if}}
+      {{#if delok}}
+        <p class="alert alert-danger"> Registro removido com sucesso!! {{ this.success }}</p>
+      {{/if}}
       <div class="panel panel-primary">
         <div class="panel-heading">
            Adiciona link no Menu
@@ -27,15 +30,18 @@
               <input type="text" class="form-control" name="nome" placeholder="Informe nome do link"/>
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <div class="btn-group">
+                <button type="submit" class="btn btn-primary">Aqui para Incluir Link</button>
                 <a href="/" class="btn btn-primary">Home</a>
+                <a href="/formincluir/listar" class="btn btn-primary">Aqui para Excluir Link</a>
+                </div>
               </div>
           </form>
         </div>
       </div>
     </div>
     <div class='container'>
-     <div show class="panel panel-primary">
+     <div class="panel panel-primary">
         <div class="panel-heading">
           Excluir Link
         </div>
@@ -43,7 +49,7 @@
         <div class="list-group">
         {{#if listar }}
         {{#listar}}
-          <a href="#" class="list-group-item">Nome: {{ nome_url }} URL: {{ url_url }} ID: {{ id_nav }}</a>       
+        <a href="/formincluir/del/?id={{id_nav}}&nome={{nome_url}}&url={{url_url}}"  onclick="return confirm('Confirma exclusão do registro: {{id_nav}}')" class="list-group-item">ID: {{id_nav}} - {{ nome_url }} URL: {{ url_url }}</a>
         {{/listar}}
         {{/if}}
         </div>

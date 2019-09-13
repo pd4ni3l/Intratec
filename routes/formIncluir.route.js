@@ -25,7 +25,7 @@ router.get('/ok', function( req, res){
    req.session.errors = null;
 });
 
-router.post('/post',[ check('url').isURL(), check('nome').isAlpha() ], function(req, res) {
+router.post('/post',[ check('url').isURL(), check('nome').isAlpha() ],(req, res) => {
    if(req.body.nome == '' && req.body.url == ''){
       let errors = 'Falta nome e URL';
       req.session.errors = errors;
@@ -78,6 +78,27 @@ router.post('/post',[ check('url').isURL(), check('nome').isAlpha() ], function(
                //console.log(req.session.listar)
                res.render('formincluir', { listar: req.session.listar });
                //res.json(rows)
+              }    
+          })
+      });
+   });
+
+router.get('/del/', (req, res) => {
+   let sql = 'DELETE FROM navbar WHERE id_nav = ?'
+   var params = [req.query.id];
+   db.serialize(function(){
+       db.run(sql,params, (err, row) => {
+           if (err) {
+               console.log('Droga aconteceu algum erro' + err)
+              }
+              else{
+               console.log('REQUESTE DEL', req.query.id, req.query.nome, req.query.url );
+               req.session.delok = true;
+               let params = [req.query.id, req.query.nome, req.query.url];
+               req.session.delok = params;
+               console.log(req.session.success);
+               //res.redirect('/formincluir')
+               res.render('formincluir', { delok: req.session.delok });
               }    
           })
       });
