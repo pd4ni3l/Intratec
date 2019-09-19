@@ -25,7 +25,16 @@ router.get('/ok', function( req, res){
    req.session.errors = null;
 });
 
-router.post('/post',[ check('url').isURL(), check('nome').isAlpha() ],(req, res) => {
+router.post('/post',[ check('url').isURL( {protocols: ['http','https'], require_protocol: true}) , check('nome').isAlpha() ],(req, res) => {
+   const erros = validationResult(req);
+   //console.log('Erros SIM ou Não:', erros.errors);
+   if (!erros.isEmpty()) {
+      req.session.errors = erros.errors;
+      req.session.success = false;
+      return res.status(422).json({ erros: erros.array() })
+      //res.render('formincluir', { errors: req.session.errrors });
+      //res.redirect('/formincluir/err').json({ erros: erros.array() });
+   }
    if(req.body.nome == '' && req.body.url == ''){
       let errors = 'Falta nome e URL';
       req.session.errors = errors;
@@ -47,8 +56,8 @@ router.post('/post',[ check('url').isURL(), check('nome').isAlpha() ],(req, res)
    else{
       req.session.success = true;
       //console.log('ELSE.....', errors)
-      console.log('Entrei no post sucesso');
-      console.log(req.body.nome, req.body.url)
+      //console.log('Entrei no post sucesso');
+      //console.log(req.body.nome, req.body.url)
       let sql = 'INSERT INTO navbar (nome_url, url_url) VALUES (?, ?)'
       var params = [req.body.nome, req.body.url]
       
