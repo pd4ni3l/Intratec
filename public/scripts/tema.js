@@ -9,7 +9,7 @@ if (monName [now.getMonth() ] == 'outubro') {
     .attr({
       type: 'text/css', 
       rel: 'stylesheet',
-      href: 'stylesheets/halloween.css'
+      href: 'https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'
     });
     $('#imgbanner').attr('src', 'images/banner.jpg');
     // Localizar Elemento footer
@@ -22,6 +22,13 @@ if (monName [now.getMonth() ] == 'outubro') {
     var criaImg = document.createElement('img')
     // Atribuir src a img
     criaImg.src = 'images/gato.png'
+    $('<link>')
+      .appendTo('footer')
+      .attr({
+        type: 'text/css', 
+        rel: 'stylesheet',
+        href: 'stylesheets/halloween.css'
+      });
     // Fechar DIV e IMG
     divi.prepend(criaImg)
     // Fechar DIV

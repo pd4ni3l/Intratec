@@ -23,11 +23,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pd4niel/intratec"
+    "url": "git+https://github.com/pd4niel/intratec.git"
   },
   "keywords": [
     "intratec"
   ],
   "author": "Paulo Daniel",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pd4niel/intratec/issues"
+  },
+  "homepage": "https://github.com/pd4niel/intratec#readme"
 }
