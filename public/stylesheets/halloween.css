@@ -24,6 +24,7 @@ a img { /* this selector removes the default blue border displayed in some brows
 a:link {
 	color:#414958;
 	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+	font-size: 15px;
 }
 a:visited {
 	color: #4E5869;

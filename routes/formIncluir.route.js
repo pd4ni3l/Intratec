@@ -25,7 +25,7 @@ router.get('/ok', function( req, res){
    req.session.errors = null;
 });
 
-router.post('/post',[ check('url').isURL( {protocols: ['http','https'], require_protocol: true}) , check('nome').isAlpha() ],(req, res) => {
+router.post('/post',[ check('url').isURL( {protocols: ['http','https'], require_protocol: true}) , check('nome').isEmpty() ],(req, res) => {
    const erros = validationResult(req);
    //console.log('Erros SIM ou Não:', erros.errors);
    if (!erros.isEmpty()) {
