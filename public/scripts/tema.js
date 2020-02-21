@@ -67,7 +67,8 @@ if (monName [now.getMonth() ] == 'fevereiro') {
         rel: 'stylesheet',
         href: 'https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'
       });
-      $('#imgbanner').attr({'src':'images/banner_carnaval-2.jpg', 'width':'1260px', 'height':'200px'});
+      //$('#imgbanner').attr({'src':'images/banner_carnaval-2.jpg', 'width':'1260px', 'height':'200px'});
+      $('#imgbanner').attr({'src':'images/banner_carnaval-2.jpg'});
       // get Elemento footer
       var secaoFooter = document.getElementById('footer')
       // Criar o Elemento div
@@ -77,9 +78,9 @@ if (monName [now.getMonth() ] == 'fevereiro') {
       // Criar Elemento image
       var criaImg = document.createElement('img')
       // Atribuir src a img
-      criaImg.src = 'images/banner_carnaval_saude1.jpg'
-      criaImg.width = '555'
-      criaImg.height = '227'
+      //criaImg.src = 'images/banner_carnaval-1.jpg'
+      //criaImg.width = '960'
+      //criaImg.height = '227'
       $('<link>')
         .appendTo('footer')
         .attr({
