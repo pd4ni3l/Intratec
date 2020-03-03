@@ -8,12 +8,23 @@ const session = require('express-session');
 const app = express(); 
 const PORT = 8080;
 const sqlite3 = require('sqlite3');
+
+// //Controlando acesso com login
+// const basicAuth = require('./_helpers/basic-auth');
+// const errorHandler = require('./_helpers/error-handler');
+// // api routes
+// app.use('/users', require('./users/users.controller'));
+// // use basic HTTP auth to secure the api
+// app.use(basicAuth);
+// // global error handler
+// app.use(errorHandler);
+
 const db = new sqlite3.Database('db/intratec.db', function(err){
     if (err) {
         console.log(err)
         return
     }
-    console.log("Conectado ao banco")
+    console.log("Conectado ao banco 1")
 });
 
 app.use(bodyParser.json())
@@ -35,7 +46,8 @@ const navega = require('./routes/navega.route');
 
 app.use('/formincluir', formincluir);
 app.use('/navega', navega);
-// Monta barra de navegação
+
+// Monta barra de menu de navegação
 app.get('/navegacao', function(request, response) {
     db.serialize(function(){
         db.all("SELECT nome_url, url_url FROM navbar ORDER BY nome_url;", function(err, rows){
