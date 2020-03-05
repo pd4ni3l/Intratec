@@ -36,9 +36,11 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 /* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
 .mycontainer {
-	/*width: 80%; */
-	max-width: 960px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
-	min-width: 780px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+	width: 80%;
+	/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	max-width: 960px;
+	/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+	/* min-width: 960px; */
 	background-color: #93A5C4;
 	margin-top: 0;
 	margin-bottom: 0;
@@ -49,6 +51,7 @@ a:hover, a:active, a:focus { /* this group of selectors will give a keyboard nav
 
 /* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
 .header {
+	/* margin-top: 305px; */
 	background: #6F7D94;
 }
 

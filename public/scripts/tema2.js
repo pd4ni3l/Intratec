@@ -66,7 +66,7 @@ if (monName [now.getMonth() ] == 'fevereiro') {
       .attr({
         type: 'text/css', 
         rel: 'stylesheet',
-        href: 'https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'
+      href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'
       });
       //$('#imgbanner').attr({'src':'images/banner_carnaval-2.jpg', 'width':'1260px', 'height':'200px'});
       $('#imgbanner').attr({'src':'images/banner_carnaval-2.jpg'});
@@ -87,8 +87,15 @@ if (monName [now.getMonth() ] == 'fevereiro') {
         .attr({
           type: 'text/css', 
           rel: 'stylesheet',
-          href: 'stylesheets/carnaval.css'
+          href: 'stylesheets/carnaval2.css'
         });
+        $('<link>')
+          .appendTo('footer')
+          .attr({
+          type: 'text/css',
+          rel: 'stylesheet',
+          href: 'stylesheets/base2.css'
+      });
       // Fechar DIV e IMG
       divi.prepend(criaImg)
       // Fechar DIV
@@ -100,14 +107,14 @@ else{ // Tema padrão
       .attr({
         type: 'text/css', 
         rel: 'stylesheet',
-        href: 'https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'
+        href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'
       });
     $('<link>')
       .appendTo('head')
       .attr({
         type: 'text/css', 
         rel: 'stylesheet',
-        href: 'stylesheets/style-base.css'
+        href: 'stylesheets/base2.css'
       });
       $('#imgbanner').attr('src', 'images/banner-site.jpg');
       $('#footbanner').attr('src', 'images/gato.png');
@@ -117,16 +124,16 @@ else{ // Tema padrão
                           'margin-left: auto', 'background-color: CE6826', 'max-with: 960');
       $('#banner').attr('float', 'left');
       }   
-
+      
 // Dia internacional da mulher 
-if (monName [now.getMonth() ] == 'março') {
+if (monName [now.getMonth() ] == 'março0') {
   // tema dia internacional da mulher
   $('<link>')
     .appendTo('head')
     .attr({
       type: 'text/css',
       rel: 'stylesheet',
-      href: 'https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'
+      href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'
     });
   //$('#imgbanner').attr({'src':'images/banner_carnaval-2.jpg', 'width':'1260px', 'height':'200px'});
   $('#imgbanner').attr({ 'src': 'images/banner_mulher-3.png', 'width':'960px', 'height':'300px' });
@@ -147,7 +154,14 @@ if (monName [now.getMonth() ] == 'março') {
     .attr({
       type: 'text/css',
       rel: 'stylesheet',
-      href: 'stylesheets/marco.css'
+      href: 'stylesheets/marco2.css'
+    });
+  $('<link>')
+    .appendTo('footer')
+    .attr({
+      type: 'text/css',
+      rel: 'stylesheet',
+      href: 'stylesheets/base2.css'
     });
   // Fechar DIV e IMG
   divi.prepend(criaImg)
@@ -160,14 +174,14 @@ else{ // Tema padrão
     .attr({
       type: 'text/css',
       rel: 'stylesheet',
-      href: 'https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'
+      href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'
     });
   $('<link>')
     .appendTo('head')
     .attr({
       type: 'text/css',
       rel: 'stylesheet',
-      href: 'stylesheets/style-base.css'
+      href: 'stylesheets/base2.css'
     });
   $('#imgbanner').attr('src', 'images/banner-site.jpg');
   $('#footbanner').attr('src', 'images/gato.png');
