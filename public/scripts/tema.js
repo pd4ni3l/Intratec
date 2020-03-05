@@ -1,4 +1,5 @@
 dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado");
+dayOfMon = new Array ("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31")
 monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho","agosto", "setembro", "outubro", "novembro", "dezembro");
 now = new Date
 $(document).ready(function(){
@@ -119,7 +120,7 @@ else{ // Tema padrão
       }   
 
 // Dia internacional da mulher 
-if (monName [now.getMonth() ] == 'março') {
+if (monName [now.getMonth() ] == 'março' && dayOfMon [now.getDate()] <= '8') {
   // tema dia internacional da mulher
   $('<link>')
     .appendTo('head')
