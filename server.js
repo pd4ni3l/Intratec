@@ -6,7 +6,7 @@ const hbs = require('express-hbs');
 const session = require('express-session');
 // const expressValidator = require('express-validator');
 const app = express(); 
-const PORT = 8080;
+const PORT = 8090;
 const sqlite3 = require('sqlite3');
 
 // //Controlando acesso com login
