@@ -1,0 +1,77 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Adiciona Link no Menu</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet"
+    type="text/css">
+</head>
+
+<body>
+  <div class="container">
+    {{#if errors }}
+    <p class="alert alert-danger"> Falta coisa: {{ this.errors }}</p>
+    {{/if}}
+    {{#if success }}
+    <p class="alert alert-success"> Registro inserido com sucesso!! {{ this.success }}</p>
+    {{/if}}
+    {{#if delok}}
+    <p class="alert alert-success"> Registro removido com sucesso!! {{ this.success }}</p>
+    {{/if}}
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Adiciona link no Card
+      </div>
+      <div class="panel-body">
+        <form method="post" action="/formincluir/post/vpn">
+          <div class="form-group">
+            <label class="col-md-4">URL do Link </label>
+            <input type="text" class="form-control" name="url" placeholder="Informe a URL" />
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Nome do Link</label>
+            <input type="text" class="form-control" name="nome" placeholder="Informe nome do link" />
+          </div>
+          <div class="form-group">
+            <label class="col-md-4">Direto da Internet (sem vpm)</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="direto" id="direto" value="direto"
+                checked>
+              <label class="form-check-label" for="direto">
+                Sem VPN
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="btn">
+              <button type="submit" class="btn btn-primary">Aqui para Incluir Link</button>
+              <a href="/" class="btn btn-primary">Home</a>
+              <a href="/formincluir/listar" class="btn btn-primary">Aqui para Excluir Link</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class='container'>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Excluir Link
+      </div>
+      <div class="panel-body">
+        <div class="list-group">
+          {{#if listar }}
+          {{#listar}}
+          <a href="/formincluir/del/?id={{id_nav}}&nome={{nome_url}}&url={{url_url}}"
+            onclick="return confirm('Confirma exclusão do registro: {{id_nav}}')" class="list-group-item">ID: {{id_nav}}
+            - {{ nome_url }} URL: {{ url_url }}</a>
+          {{/listar}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
