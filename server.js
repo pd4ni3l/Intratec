@@ -9,16 +9,6 @@ const app = express();
 const PORT = 8090;
 const sqlite3 = require('sqlite3');
 
-// //Controlando acesso com login
-// const basicAuth = require('./_helpers/basic-auth');
-// const errorHandler = require('./_helpers/error-handler');
-// // api routes
-// app.use('/users', require('./users/users.controller'));
-// // use basic HTTP auth to secure the api
-// app.use(basicAuth);
-// // global error handler
-// app.use(errorHandler);
-
 const db = new sqlite3.Database('db/intratec.db', function(err){
     if (err) {
         console.log(err)
@@ -43,9 +33,13 @@ app.engine('hbs', hbs.express4({
 // Routes
 const formincluir = require('./routes/formIncluir.route');
 const navega = require('./routes/navega.route');
+const formincluirvpn = require('./routes/formIncluirVpn.route');
+const vpncards = require('./routes/vpncards.route')
 
 app.use('/formincluir', formincluir);
 app.use('/navega', navega);
+app.use('/formincluirvpn', formincluirvpn);
+app.use('/vpncards', vpncards);
 
 // Monta barra de menu de navegação
 app.get('/navegacao', function(request, response) {
@@ -63,6 +57,38 @@ app.get('/navegacao', function(request, response) {
         })
     })
     
+})
+
+// Monta CARDs
+app.get('/vpncards', function(request, response) {
+    db.serialize(function(){
+        // listar nome_url_vpn, url_url_vpn, 
+        // agrupado por tipo_acesso: direto(0), sovpn(1), vpnwrkst(2)
+        db.all("SELECT nome_url_vpn, url_url_vpn FROM vpn GROUP BY tipo_acesso ORDER BY nome_url;", function(err, rows){
+            if (err) {
+                console.log('Droga aconteceu algum erro' + err)
+                //throw err;
+            }
+            else{
+                //console.log(rows)
+                //response.send(rows)
+                response.json(rows)
+            }    
+        })
+    })
+})
+app.post('/vpn',function(req, res){
+    //console.log(req.body.nome, req.body.url)
+    let sql = 'INSERT INTO vpn (nome_url_vpn, url_url_vpn, tipo_acesso) VALUES (?, ?, ?)'
+    var params = [req.body.nome, req.body.url, req.body.acesso]
+    db.run(sql, params, function(err, result){
+        if (err){
+            console.log('Xiii deu ruim insert.server ' + err)
+            return;
+        }
+        //console.log('Registro inserido ID: ' + this.lastID)
+        res.status(200).redirect('index.html')
+    })
 })
 
 app.post('/navegacao',function(req, res){

@@ -23,7 +23,7 @@
         Adiciona link no Card
       </div>
       <div class="panel-body">
-        <form method="post" action="/formincluir/post/vpn">
+        <form method="post" action="/formincluirvpn/post">
           <div class="form-group">
             <label class="col-md-4">URL do Link </label>
             <input type="text" class="form-control" name="url" placeholder="Informe a URL" />
@@ -35,18 +35,19 @@
           <div class="form-group">
             <label class="col-md-4">Direto da Internet (sem vpm)</label>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="direto" id="direto" value="direto"
-                checked>
-              <label class="form-check-label" for="direto">
-                Sem VPN
-              </label>
+              <input class="form-check-input" type="radio" name="acesso" id="direto" value="0" checked>
+              <label class="form-check-label" for="direto">Sem VPN</label>
+              <input class="form-check-input" type="radio" name="acesso" id="sovpn" value="1">
+              <label class="form-check-label" for="direto">Somente VPN</label>
+              <input class="form-check-input" type="radio" name="acesso" id="vpnwrkst" value="2">
+              <label class="form-check-label" for="direto">VPN e Estação</label>
             </div>
           </div>
           <div class="form-group">
             <div class="btn">
               <button type="submit" class="btn btn-primary">Aqui para Incluir Link</button>
               <a href="/" class="btn btn-primary">Home</a>
-              <a href="/formincluir/listar" class="btn btn-primary">Aqui para Excluir Link</a>
+              <a href="/formincluirvpn/listar" class="btn btn-primary">Aqui para Excluir Link</a>
             </div>
           </div>
         </form>
@@ -62,9 +63,9 @@
         <div class="list-group">
           {{#if listar }}
           {{#listar}}
-          <a href="/formincluir/del/?id={{id_nav}}&nome={{nome_url}}&url={{url_url}}"
-            onclick="return confirm('Confirma exclusão do registro: {{id_nav}}')" class="list-group-item">ID: {{id_nav}}
-            - {{ nome_url }} URL: {{ url_url }}</a>
+          <a href="/formincluirvpn/del/?id={{vpn_id}}&nome={{nome_url_vpn}}&url={{url_url_vpn}}&acesso={{tipo_acesso}}"
+            onclick="return confirm('Confirma exclusão do registro: {{vpn_id}}')" class="list-group-item">ID: {{vpn_id}}
+            - {{ nome_url_vpn }} URL: {{ url_url_vpn }} Tipo Acesso: {{ tipo_acesso }} </a>
           {{/listar}}
           {{/if}}
         </div>
