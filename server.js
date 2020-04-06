@@ -64,7 +64,8 @@ app.get('/vpncards', function(request, response) {
     db.serialize(function(){
         // listar nome_url_vpn, url_url_vpn, 
         // agrupado por tipo_acesso: direto(0), sovpn(1), vpnwrkst(2)
-        db.all("SELECT nome_url_vpn, url_url_vpn FROM vpn GROUP BY tipo_acesso ORDER BY nome_url;", function(err, rows){
+        // db.all("SELECT nome_url_vpn, url_url_vpn, tipo_acesso FROM vpn WHERE tipo_acesso='0' ORDER BY nome_url_vpn;", function(err, rows){
+        db.all("SELECT nome_url_vpn, url_url_vpn, tipo_acesso FROM vpn ORDER BY nome_url_vpn;", function(err, rows){
             if (err) {
                 console.log('Droga aconteceu algum erro' + err)
                 //throw err;
