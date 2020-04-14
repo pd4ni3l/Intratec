@@ -24,7 +24,7 @@ function getCards() {
                 if (data[i].tipo_acesso == "0") {
                     newdata0.push({
                         'new_nome_url_vpn': data[i].nome_url_vpn,
-                        'new_url_url_vpn': data[i].nome_url_vpn,
+                        'new_url_url_vpn': data[i].url_url_vpn,
                         'new_tipo_acesso': data[i].tipo_acesso
                     });
                 }
@@ -37,7 +37,7 @@ function getCards() {
                 if (data[i].tipo_acesso == "1") {
                     newdata1.push({
                         'new_nome_url_vpn': data[i].nome_url_vpn,
-                        'new_url_url_vpn': data[i].nome_url_vpn,
+                        'new_url_url_vpn': data[i].url_url_vpn,
                         'new_tipo_acesso': data[i].tipo_acesso
                     });
                 }
@@ -50,7 +50,7 @@ function getCards() {
                 if (data[i].tipo_acesso == "2") {
                     newdata2.push({
                         'new_nome_url_vpn': data[i].nome_url_vpn,
-                        'new_url_url_vpn': data[i].nome_url_vpn,
+                        'new_url_url_vpn': data[i].url_url_vpn,
                         'new_tipo_acesso': data[i].tipo_acesso
                     });
                 }

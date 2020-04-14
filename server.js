@@ -1,11 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser');
 const hbs = require('express-hbs');
+
 // const path = require('path');
 // const cookieParser = require('cookie-parser');
 const session = require('express-session');
 // const expressValidator = require('express-validator');
 const app = express(); 
+
 const PORT = 8090;
 const sqlite3 = require('sqlite3');
 
@@ -42,7 +44,7 @@ app.use('/formincluirvpn', formincluirvpn);
 app.use('/vpncards', vpncards);
 
 // Monta barra de menu de navegação
-app.get('/navegacao', function(request, response) {
+app.get('/navegacao', function(req, response) {
     db.serialize(function(){
         db.all("SELECT nome_url, url_url FROM navbar ORDER BY nome_url;", function(err, rows){
             if (err) {
