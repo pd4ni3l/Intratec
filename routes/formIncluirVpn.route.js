@@ -49,7 +49,12 @@ router.post('/post', [check('url').isURL({ protocols: ['http', 'https'], require
       res.redirect('/formincluirvpn/err');
    }
    else if (req.body.url != '' && req.body.nome == '') {
-      let errors = 'Falta nome';
+      let errors = 'Falta nome!';
+      req.session.errors = errors;
+      req.session.success = false;
+      res.redirect('/formincluirvpn/err');
+   } else if (req.body.acesso == '' && req.body.nome != '' && req.body.url != '') {
+      let errors = 'Falta forma de acesso!';
       req.session.errors = errors;
       req.session.success = false;
       res.redirect('/formincluirvpn/err');
