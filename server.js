@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const hbs = require('express-hbs');
 
+const db = require('./controllers/controller.db');
+
 // const path = require('path');
 // const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -9,15 +11,6 @@ const session = require('express-session');
 const app = express(); 
 
 const PORT = 8090;
-const sqlite3 = require('sqlite3');
-
-const db = new sqlite3.Database('db/intratec.db', function(err){
-    if (err) {
-        console.log(err)
-        return
-    }
-    console.log("Conectado ao banco 1")
-});
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}));
@@ -34,12 +27,14 @@ app.engine('hbs', hbs.express4({
 
 // Routes
 const formincluir = require('./routes/formIncluir.route');
-const navega = require('./routes/navega.route');
+// const controllerMenu = require('./controllers/controller.menu');
+// const navega = require('./routes/navega.route');
 const formincluirvpn = require('./routes/formIncluirVpn.route');
 const vpncards = require('./routes/vpncards.route')
 
 app.use('/formincluir', formincluir);
-app.use('/navega', navega);
+// app.use('/formincluir', controllerMenu.get);
+// app.use('/navega', navega);
 app.use('/formincluirvpn', formincluirvpn);
 app.use('/vpncards', vpncards);
 

@@ -5,21 +5,23 @@ const { check, validationResult } = require('express-validator');
 
 const db = require('../controllers/controller.db');
 
-const router =  express.Router();
+// const router =  express.Router();
 
-router.get('/', function( req, res){
+const get = ( req, res ) => {
    res.render('formincluir');
-});
-router.get('/err', function( req, res){
+};
+
+const geterr = ( req, res) => {
    res.render('formincluir', {success: req.session.success, errors: req.session.errors });
    req.session.errors = null;
-});
-router.get('/ok', function( req, res){
+};
+
+const getok = ( req, res) => {
    res.render('formincluir', {success: req.session.success, errors: req.session.errors });
    req.session.errors = null;
-});
--
-router.post('/post',[ check('url').isURL(
+};
+
+/* router.post('/post',[ check('url').isURL(
    {protocols: ['http','https'], require_protocol: true}) ],(req, res) => {
    const erros = validationResult(req);
    //console.log('Erros SIM ou Não:', erros.errors);
@@ -106,6 +108,10 @@ router.get('/del/', (req, res) => {
               }    
           })
       });
-   });
+   }); */
 
-module.exports = router;
+module.exports = {
+    get,
+    geterr,
+    getok,
+};

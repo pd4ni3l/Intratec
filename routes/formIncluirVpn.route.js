@@ -2,14 +2,8 @@ const express = require('express');
 const hbs = require('express-hbs');
 
 const { check, validationResult } = require('express-validator');
-const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database('db/intratec.db', function (err) {
-   if (err) {
-      console.log(err)
-      return
-   }
-   console.log("Conectado ao banco")
-});
+const db = require('../controllers/controller.db');
+
 
 const router = express.Router();
 

@@ -2,7 +2,9 @@
   <head>
     <meta charset="utf-8">
     <title>Adiciona Link no Menu</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    rel="stylesheet"
+    type="text/css">
   </head>
   <body>
     <div class="container">
@@ -23,17 +25,21 @@
           <form method="post" action="/formincluir/post">
             <div class="form-group">
               <label class="col-md-4">URL do Link </label>
-              <input type="text" class="form-control" name="url" placeholder="Informe a URL"/>
+              <input type="text" class="form-control"
+              name="url"
+              placeholder="Informe http://... ou https://...."/>
             </div>
             <div class="form-group">
               <label class="col-md-4">Nome do Link</label>
-              <input type="text" class="form-control" name="nome" placeholder="Informe nome do link"/>
+              <input type="text" class="form-control"
+              name="nome"
+              placeholder="Informe um nome para o link."/>
               </div>
               <div class="form-group">
                 <div class="btn">
-                <button type="submit" class="btn btn-primary">Aqui para Incluir Link</button>
-                <a href="/" class="btn btn-primary">Home</a>
-                <a href="/formincluir/listar" class="btn btn-primary">Aqui para Excluir Link</a>
+                <button type="submit" class="btn btn-primary">Clique aqui para Incluir Link</button>
+                <a href="/" class="btn btn-primary">Clique aqui para Home</a>
+                <a href="/formincluir/listar" class="btn btn-primary">Clique aqui para Excluir um Link</a>
                 </div>
               </div>
           </form>
@@ -43,13 +49,15 @@
     <div class='container'>
      <div class="panel panel-primary">
         <div class="panel-heading">
-          Excluir Link
+          Lista de links para Excluir
         </div>
       <div class="panel-body">
         <div class="list-group">
         {{#if listar }}
         {{#listar}}
-        <a href="/formincluir/del/?id={{id_nav}}&nome={{nome_url}}&url={{url_url}}"  onclick="return confirm('Confirma exclusão do registro: {{id_nav}}')" class="list-group-item">ID: {{id_nav}} - {{ nome_url }} URL: {{ url_url }}</a>
+        <a href="/formincluir/del/?id={{id_nav}}&nome={{nome_url}}&url={{url_url}}"
+         onclick="return confirm('Confirma exclusão do registro: {{id_nav}}')"
+         class="list-group-item">ID: {{id_nav}} - {{ nome_url }} URL: {{ url_url }}</a>
         {{/listar}}
         {{/if}}
         </div>

@@ -1,7 +1,5 @@
 const userService = require('../users/user.service');
 
-module.exports = basicAuth;
-
 async function basicAuth(req, res, next) {
     // make authenticate path public
     if (req.path === '/users/authenticate') {
@@ -26,4 +24,6 @@ async function basicAuth(req, res, next) {
     req.user = user
 
     next();
+
 }
+module.exports = basicAuth;

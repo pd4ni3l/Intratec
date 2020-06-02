@@ -4,7 +4,7 @@ const db = new sqlite3.Database('db/intratec.db', function(err){
         console.log(err)
         return
     }
-    console.log("Conectado ao banco")
+    console.log("Teste Conectado ao banco")
 });
 
 db.serialize(function() {
